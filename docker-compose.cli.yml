@@ -10,12 +10,19 @@ services:
       - composer-cache:/root/.composer/cache
 
   yarn:
-    image: 'whatwedo/yarn:latest'
+    image: 'whatwedo/yarn:v2.3'
     entrypoint: yarn
     working_dir: /app
     volumes:
       - .:/app
       - yarn-cache:/root/.cache/yarn/v1
+
+  artisan:
+    image: 'php:8.0-cli'
+    entrypoint: 'php artisan'
+    working_dir: /app
+    volumes:
+      - .:/app
 
 volumes:
   composer-cache:
