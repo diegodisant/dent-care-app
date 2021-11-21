@@ -17,13 +17,6 @@ services:
       - .:/app
       - yarn-cache:/root/.cache/yarn/v1
 
-  artisan:
-    image: 'php:8.0-cli'
-    entrypoint: 'php artisan'
-    working_dir: /app
-    volumes:
-      - .:/app
-
 volumes:
   composer-cache:
     name: 'composer-cache'

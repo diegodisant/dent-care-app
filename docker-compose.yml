@@ -18,3 +18,10 @@ services:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
     container_name: ${APP_PREFIX_NAME}_nginx
+
+  artisan:
+    image: ${APP_PREFIX_NAME}-php:${APP_REVISION:-latest}
+    entrypoint: 'php artisan'
+    working_dir: /app
+    volumes:
+      - .:/app
