@@ -12,6 +12,30 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js').vue()
-    .postCss('resources/css/app.css', 'public/css', [
+    .sass('resources/scss/app.scss', 'public/css', [
         //
-    ]);
+    ])
+    .webpackConfig({
+        module: {
+            rules: [
+                {
+                    test: /\.tsx?$/,
+                    loader: 'ts-loader',
+                    exclude: /node_modules/,
+                    options: {
+                        appendTsSuffixTo: [/\.vue$/],
+                    },
+                },
+            ],
+        },
+        resolve: {
+            extensions: [
+                '*',
+                '.js',
+                '.jsx',
+                '.vue',
+                '.ts',
+                '.tsx',
+            ],
+        },
+    });

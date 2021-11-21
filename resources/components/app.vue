@@ -4,15 +4,16 @@
     </div>
 </template>
 
-<script>
-const default_layout = 'default';
-
+<script lang="ts">
 export default {
     computed: {},
-    data() {
+    mounted(): void {
+        console.log('Component mounted');
+    },
+    data(): object {
         return {
             message: 'Welcome to Dental Care Application',
-        }
+        };
     }
 };
 </script>
