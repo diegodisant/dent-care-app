@@ -1,11 +1,14 @@
 <?php
+declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
 
 class CreateUsersTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -19,6 +22,15 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('phone_number')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->enum(
+                'user_type',
+                [
+                    User::USER_TYPE_ADMIN,
+                    User::USER_TYPE_PATIENT,
+                ]
+            );
             $table->rememberToken();
             $table->timestamps();
         });
