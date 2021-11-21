@@ -22,8 +22,6 @@ services:
       - database
 
   nginx:
-    environment:
-      PHP_FPM_HOST: ${PHP_FPM_HOST:-php}
     ports:
       - '80:80'
     networks:
