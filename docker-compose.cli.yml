@@ -2,12 +2,23 @@ version: '3.8'
 
 services:
   composer:
-    image: composer:latest
+    image: 'composer:latest'
     entrypoint: composer
+    working_dir: /app
     volumes:
       - .:/app
-      - composer-cache:/root/.composer/cache 
+      - composer-cache:/root/.composer/cache
+
+  yarn:
+    image: 'whatwedo/yarn:latest'
+    entrypoint: yarn
+    working_dir: /app
+    volumes:
+      - .:/app
+      - yarn-cache:/root/.cache/yarn/v1
 
 volumes:
   composer-cache:
     name: 'composer-cache'
+  yarn-cache:
+    name: 'yarn-cache'
