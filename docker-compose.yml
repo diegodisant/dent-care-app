@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  database:
+    image: 'mysql:latest'
+    container_name: ${APP_PREFIX_NAME}_database
+
+  php:
+    image: ${APP_PREFIX_NAME}-php:${APP_REVISION:-latest}
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    container_name: ${APP_PREFIX_NAME}_php
+
+  nginx:
+    image: ${APP_PREFIX_NAME}_nginx:${APP_REVISION:-latest}
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    container_name: ${APP_PREFIX_NAME}_nginx

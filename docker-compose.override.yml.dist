@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  database:
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+    ports:
+      - '3306:3306'
+    networks:
+      - app-tier
+    volumes:
+      - database-volume:/var/lib/mysql
+    restart: always
+
+  php:
+    networks:
+      - app-tier
+    volumes:
+      - .:/app
+    links:
+      - database
+
+  nginx:
+    environment:
+      PHP_FPM_HOST: ${PHP_FPM_HOST:-php}
+    ports:
+      - '80:80'
+    networks:
+      - app-tier
+    volumes:
+      - .:/app
+    links:
+      - php
+
+networks:
+  app-tier:
+    name: 'app-tier'
+    driver: bridge
+
+volumes:
+  database-volume:
+    name: 'database-volume'
