@@ -1,4 +1,3 @@
-docker-compose.*
 *.DS_Store*
-
-/docker
+*Dockerfile*
+docker-compose.*
