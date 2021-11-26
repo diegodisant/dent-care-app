@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\MedicalNote;
 use App\Models\Appointment;
 
-class CreateMedicalNotes extends Migration
+class CreateMedicalNotesTable extends Migration
 {
     public function up(): void
     {
