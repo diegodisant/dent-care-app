@@ -3,5 +3,9 @@
   "Password": "Contraseña",
   "Remember me": "Recordarme",
   "Forgot your password?": "¿Olvidaste tu contraseña?",
-  "Log in": "Iniciar sesión"
+  "Log in": "Iniciar sesión",
+  "Name": "Nombre",
+  "Confirm Password": "Confirmar contraseña",
+  "Already registered?": "¿Ya te registraste?",
+  "Register": "Regístrarme"
 }
