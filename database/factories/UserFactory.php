@@ -18,6 +18,7 @@ class UserFactory extends Factory
             User::DB_FIELD_PASSWORD => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             User::DB_FIELD_USER_TYPE => $this->getRandomUserType(),
             User::DB_FIELD_REMEMBER_TOKEN => Str::random(10),
+            User::CREATED_AT => now(),
         ];
     }
 

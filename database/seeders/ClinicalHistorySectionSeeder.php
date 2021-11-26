@@ -26,6 +26,7 @@ class ClinicalHistorySectionSeeder extends Seeder
     {
         return [
             ClinicalHistorySection::DB_FIELD_TITLE => $title,
+            ClinicalHistorySection::CREATED_AT => now(),
         ];
     }
 }

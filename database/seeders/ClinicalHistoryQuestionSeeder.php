@@ -158,6 +158,7 @@ class ClinicalHistoryQuestionSeeder extends Seeder
             ClinicalHistoryQuestion::DB_FIELD_FK_CLINICAL_HISTORY_SECTION => $sectionId,
             ClinicalHistoryQuestion::DB_FIELD_QUESTION => $text,
             ClinicalHistoryQuestion::DB_FIELD_TYPE => $type,
+            ClinicalHistoryQuestion::CREATED_AT => now(),
         ];
     }
 }
