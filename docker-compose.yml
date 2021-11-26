@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   database:
-    image: 'mysql:latest'
+    image: 'mysql:5.7'
     container_name: ${APP_PREFIX_NAME}_database
 
   php:
