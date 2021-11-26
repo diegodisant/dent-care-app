@@ -5,7 +5,10 @@
   "Forgot your password?": "¿Olvidaste tu contraseña?",
   "Log in": "Iniciar sesión",
   "Name": "Nombre",
+  "Patient name": "Nombre del paciente",
   "Confirm Password": "Confirmar contraseña",
-  "Already registered?": "¿Ya te registraste?",
-  "Register": "Regístrarme"
+  "Already registered as patient?": "¿Ya te registraste como paciente?",
+  "Register": "Regístrarme",
+  "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.":  "¿Olvidaste tu contraseña? No hay problema. Solamente permítenos saber tu dirección de correo electrónico y te enviaremos un mensaje con un enlace para cambiar tu contraseña, que te permitirá crear una nueva.",
+  "Email Password Reset Link": "Solicitar Enlace"
 }
