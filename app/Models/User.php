@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Models;
 
@@ -8,40 +9,40 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements ModelInterface
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    const USER_TYPE_ADMIN = 'admin';
-    const USER_TYPE_PATIENT = 'patient';
+    public const TABLE_NAME = 'users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
+    public const DB_FIELD_NAME = 'name';
+    public const DB_FIELD_EMAIL = 'email';
+    public const DB_FIELD_PASSWORD = 'password';
+    public const DB_FIELD_USER_TYPE = 'user_type';
+    public const DB_FIELD_REMEMBER_TOKEN = 'remember_token';
+    public const DB_FIELD_EMAIL_VERIFIED_AT = 'email_verified_at';
+
+    public const USER_TYPE_ADMIN = 'admin';
+    public const USER_TYPE_PATIENT = 'patient';
+
+    public const ALLOWED_USER_TYPES = [
+        self::USER_TYPE_ADMIN,
+        self::USER_TYPE_PATIENT,
+    ];
+
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        self::DB_FIELD_NAME,
+        self::DB_FIELD_EMAIL,
+        self::DB_FIELD_PASSWORD,
+        self::DB_FIELD_USER_TYPE,
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'password',
-        'remember_token',
+        self::DB_FIELD_PASSWORD,
+        self::DB_FIELD_REMEMBER_TOKEN,
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        self::DB_FIELD_EMAIL_VERIFIED_AT => 'datetime',
     ];
 }
