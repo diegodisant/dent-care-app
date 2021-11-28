@@ -25,15 +25,16 @@
       &:hover {
         & {
           cursor: pointer;
-          animation: ease-in 0.5s;
         }
 
         .image {
           opacity: 1.0;
+          animation: ease-in 2s;
         }
 
         p {
-          @extend .primary-blue-text;
+          @extend .secondary-blue-text;
+          animation: ease-in 2s;
         }
       }
     }

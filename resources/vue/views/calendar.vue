@@ -12,7 +12,7 @@ export default {
     },
     data(): object {
         return {
-            message: 'Welcome to Dental Care Application',
+            message: 'Welcome to Calendar Module :D',
         };
     }
 };

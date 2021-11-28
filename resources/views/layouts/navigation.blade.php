@@ -16,19 +16,19 @@
                         {{ __('Dent Care App') }}
                     </x-nav-link>
 
-                    <x-nav-link>
+                    <x-nav-link :href="route('dashboard.users')" :active="request()->routeIs('dashboard.users')">
                         {{ __('Users') }}
                     </x-nav-link>
 
-                    <x-nav-link>
+                    <x-nav-link :href="route('dashboard.patients')" :active="request()->routeIs('dashboard.patients')">
                         {{ __('Patients') }}
                     </x-nav-link>
 
-                    <x-nav-link>
+                    <x-nav-link :href="route('dashboard.appointments')" :active="request()->routeIs('dashboard.appointments')">
                         {{ __('Appointments') }}
                     </x-nav-link>
 
-                    <x-nav-link>
+                    <x-nav-link :href="route('dashboard.calendar')" :active="request()->routeIs('dashboard.calendar')">
                         {{ __('Calendar') }}
                     </x-nav-link>
 
@@ -89,19 +89,19 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard.users')" :active="request()->routeIs('dashboard.users')">
                 {{ __('Users') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard.patients')" :active="request()->routeIs('dashboard.patients')">
                 {{ __('Patients') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard.appointments')" :active="request()->routeIs('dashboard.appointments')">
                 {{ __('Appointments') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard.calendar')" :active="request()->routeIs('dashboard.calendar')">
                 {{ __('Calendar') }}
             </x-responsive-nav-link>
 
