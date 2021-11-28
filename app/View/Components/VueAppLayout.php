@@ -7,10 +7,10 @@ use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
 
-class GuestLayout extends Component
+class VueAppLayout extends Component
 {
     public function render(): View | Factory
     {
-        return view('layouts.guest');
+        return view('layouts.vue-app');
     }
 }
