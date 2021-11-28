@@ -1,4 +1,101 @@
+.primary-green-text {
+  color: #baf4c8;
+}
 
+.primary-blue-text, .dashboard .modules .item:hover p {
+  color: #a5e2ec;
+}
+
+.primary-rose-text {
+  color: #fdd8df;
+}
+
+.primary-red-text {
+  color: #c62828;
+}
+
+.primary-grey-text {
+  color: #212121;
+}
+
+.primary-grey-background {
+  background-color: #212121;
+}
+
+.primary-green-background {
+  background-color: #baf4c8;
+}
+
+.primary-blue-background {
+  background-color: #a5e2ec;
+}
+
+.primary-rose-background {
+  background-color: #fdd8df;
+}
+
+.primary-red-background {
+  background-color: #c62828;
+}
+
+.primary-grey-background {
+  background-color: #212121;
+}
+
+.secondary-green-text {
+  color: #00e676;
+}
+
+.secondary-blue-text {
+  color: #00b0ff;
+}
+
+.secondary-grey-text, .dashboard .modules .item p {
+  color: #616161;
+}
+
+.secondary-grey-background {
+  background-color: #616161;
+}
+
+.secondary-green-background {
+  background-color: #00e676;
+}
+
+.secondary-blue-background {
+  background-color: #00b0ff;
+}
+
+.secondary-grey-background {
+  background-color: #616161;
+}
+
+.helper-element-round, .dashboard .gravatar-icon {
+  border-radius: 50% !important;
+}
+
+.dashboard .gravatar-icon {
+  margin: auto 20px;
+}
+.dashboard .modules .item .image {
+  width: 200px;
+  opacity: 0.5;
+}
+.dashboard .modules .item p {
+  font-weight: bold;
+  font-size: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 20px;
+}
+.dashboard .modules .item:hover {
+  cursor: pointer;
+  -webkit-animation: ease-in 0.5s;
+          animation: ease-in 0.5s;
+}
+.dashboard .modules .item:hover .image {
+  opacity: 1;
+}
 /*! tailwindcss v2.2.19 | MIT License | https://tailwindcss.com */
 
 /*! modern-normalize v1.1.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
