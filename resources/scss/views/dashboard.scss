@@ -1,0 +1,41 @@
+.dashboard {
+  .gravatar-icon {
+    @extend .helper-element-round;
+
+    margin: auto 20px;
+  }
+
+  .modules {
+    .item {
+      .image {
+        width: 200px;
+        opacity: 0.5;
+      }
+
+      p {
+        @extend .secondary-grey-text;
+
+        font-weight: bold;
+        font-size: 25px;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 20px;
+      }
+
+      &:hover {
+        & {
+          cursor: pointer;
+          animation: ease-in 0.5s;
+        }
+
+        .image {
+          opacity: 1.0;
+        }
+
+        p {
+          @extend .primary-blue-text;
+        }
+      }
+    }
+  }
+}
