@@ -13,8 +13,25 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Dent Care App') }}
                     </x-nav-link>
+
+                    <x-nav-link>
+                        {{ __('Users') }}
+                    </x-nav-link>
+
+                    <x-nav-link>
+                        {{ __('Patients') }}
+                    </x-nav-link>
+
+                    <x-nav-link>
+                        {{ __('Appointments') }}
+                    </x-nav-link>
+
+                    <x-nav-link>
+                        {{ __('Calendar') }}
+                    </x-nav-link>
+
                 </div>
             </div>
 
@@ -27,7 +44,7 @@
                                 {{ Auth::user()->name }}</span>
                             </div>
 
-                            <img :src="'https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?size=40'" class="rounded ">
+                            <img :src="'https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?size=40'" class="gravatar-icon">
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -71,6 +88,23 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+
+            <x-responsive-nav-link>
+                {{ __('Users') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link>
+                {{ __('Patients') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link>
+                {{ __('Appointments') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link>
+                {{ __('Calendar') }}
+            </x-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->
