@@ -13,8 +13,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dashboard">
+    <body class="font-sans antialiased dashboard">
+        <div class="min-h-screen bg-gray-100 module">
             @include('layouts.navigation')
 
             <!-- Page Heading -->

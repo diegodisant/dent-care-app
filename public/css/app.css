@@ -42,6 +42,26 @@
   background-color: #212121;
 }
 
+.primary-green-border {
+  border-color: #baf4c8;
+}
+
+.primary-blue-border {
+  border-color: #a5e2ec;
+}
+
+.primary-rose-border {
+  border-color: #fdd8df;
+}
+
+.primary-red-border {
+  border-color: #c62828;
+}
+
+.primary-grey-border {
+  border-color: #212121;
+}
+
 .secondary-green-text {
   color: #00e676;
 }
@@ -52,6 +72,18 @@
 
 .secondary-grey-text, .dashboard .modules .item p {
   color: #616161;
+}
+
+.secondary-green-border {
+  border-color: #00e676;
+}
+
+.secondary-blue-border, .dashboard .module .title .line-decoration {
+  border-color: #00b0ff;
+}
+
+.secondary-grey-border {
+  border-color: #616161;
 }
 
 .secondary-grey-background {
@@ -99,6 +131,18 @@
 .dashboard .modules .item:hover p {
   -webkit-animation: ease-in 2s;
           animation: ease-in 2s;
+}
+.dashboard .module .title {
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+.dashboard .module .title .line-decoration {
+  margin-top: 0;
+  width: 25px;
+  border-top-width: 4px;
+  border-style: solid;
 }
 /*! tailwindcss v2.2.19 | MIT License | https://tailwindcss.com */
 

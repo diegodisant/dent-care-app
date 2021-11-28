@@ -1,7 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tigh title">
             {{ __('Dashboard') }}
+            <div class="line-decoration"></div>
         </h2>
     </x-slot>
 
@@ -22,21 +23,21 @@
                         <div></div>
 
                         <div class="item">
-                            <a href="#">
+                            <a href="{{ route('dashboard.patients') }}">
                                 <p>{{__('Patients')}}</p>
                                 <img src="img/dashboard/patient.png" class="image"/>
                             </a>
                         </div>
 
                         <div class="item">
-                            <a href="#">
+                            <a href="{{ route('dashboard.appointments') }}">
                                 <p>{{__('Appointments')}}</p>
                                 <img src="img/dashboard/appointment.png" class="image"/>
                             </a>
                         </div>
 
                         <div class="item">
-                            <a href="#">
+                            <a href="{{ route('dashboard.calendar') }}">
                                 <p>{{__('Calendar')}}</p>
                                 <img src="img/dashboard/calendar.png" class="image justify-self-center"/>
                             </a>

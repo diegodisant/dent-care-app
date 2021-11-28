@@ -52,6 +52,26 @@ $secondary-grey: #616161;
   background-color: $primary-grey;
 }
 
+.primary-green-border {
+  border-color: $primary-green;
+}
+
+.primary-blue-border {
+  border-color: $primary-blue;
+}
+
+.primary-rose-border {
+  border-color: $primary-rose;
+}
+
+.primary-red-border {
+  border-color: $primary-red;
+}
+
+.primary-grey-border {
+  border-color: $primary-grey;
+}
+
 .secondary-green-text {
   color: $secondary-green;
 }
@@ -62,6 +82,18 @@ $secondary-grey: #616161;
 
 .secondary-grey-text {
   color: $secondary-grey;
+}
+
+.secondary-green-border {
+  border-color: $secondary-green;
+}
+
+.secondary-blue-border {
+  border-color: $secondary-blue;
+}
+
+.secondary-grey-border {
+  border-color: $secondary-grey;
 }
 
 .secondary-grey-background {
