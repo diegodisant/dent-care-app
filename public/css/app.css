@@ -2,7 +2,7 @@
   color: #baf4c8;
 }
 
-.primary-blue-text, .dashboard .modules .item:hover p {
+.primary-blue-text {
   color: #a5e2ec;
 }
 
@@ -46,7 +46,7 @@
   color: #00e676;
 }
 
-.secondary-blue-text {
+.secondary-blue-text, .dashboard .modules .item:hover p {
   color: #00b0ff;
 }
 
@@ -90,11 +90,15 @@
 }
 .dashboard .modules .item:hover {
   cursor: pointer;
-  -webkit-animation: ease-in 0.5s;
-          animation: ease-in 0.5s;
 }
 .dashboard .modules .item:hover .image {
   opacity: 1;
+  -webkit-animation: ease-in 2s;
+          animation: ease-in 2s;
+}
+.dashboard .modules .item:hover p {
+  -webkit-animation: ease-in 2s;
+          animation: ease-in 2s;
 }
 /*! tailwindcss v2.2.19 | MIT License | https://tailwindcss.com */
 
