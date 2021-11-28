@@ -31,6 +31,8 @@ services:
       - php
 
   artisan:
+    networks:
+      - app-tier
     links:
       - database
 
