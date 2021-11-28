@@ -3492,6 +3492,11 @@ laravel-mix@^6.0.6:
     webpackbar "^5.0.0-3"
     yargs "^17.2.1"
 
+laravel-vue-tailwind-pagination@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/laravel-vue-tailwind-pagination/-/laravel-vue-tailwind-pagination-0.1.8.tgz#6d4e23205a9a1a203680dbff48e3839fb2964d1c"
+  integrity sha512-w5PtQe1jBR1a5RaSEAriG9U+lkSWBlwiW4b+0zR8PcugM1yDYPt1SN7n/QEYg6jKHu8P8O6PclFi6/NoBHnG/g==
+
 lilconfig@^2.0.3:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/lilconfig/-/lilconfig-2.0.4.tgz#f4507d043d7058b380b6a8f5cb7bcd4b34cee082"
