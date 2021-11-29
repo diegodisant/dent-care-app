@@ -19,6 +19,8 @@ class CreateClinicalHistoryQuestionsTable extends Migration
                 ClinicalHistoryQuestion::DB_FIELD_TYPE,
                 ClinicalHistoryQuestion::ALLOWED_QUESTION_TYPES
             )->default(ClinicalHistoryQuestion::QUESTION_TYPE_YES_OR_NO);
+
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign(ClinicalHistoryQuestion::DB_FIELD_FK_CLINICAL_HISTORY_SECTION)

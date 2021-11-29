@@ -18,6 +18,8 @@ class CreatePatientsTable extends Migration
             $table->string(Patient::DB_FIELD_PHONE_NUMBER);
             $table->date(Patient::DB_FIELD_BIRTH_DATE);
             $table->string(Patient::DB_FIELD_ADDRESS);
+
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign(Patient::DB_FIELD_FK_USER)

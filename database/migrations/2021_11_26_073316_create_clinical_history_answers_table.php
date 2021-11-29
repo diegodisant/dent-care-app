@@ -16,6 +16,8 @@ class CreateClinicalHistoryAnswersTable extends Migration
             $table->unsignedBigInteger(ClinicalHistoryAnswer::DB_FIELD_FK_CLINICAL_HISTORY);
             $table->unsignedBigInteger(ClinicalHistoryAnswer::DB_FIELD_FK_CLINICAL_HISTORY_QUESTION);
             $table->string(ClinicalHistoryAnswer::DB_FIELD_ANSWER);
+
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign(ClinicalHistoryAnswer::DB_FIELD_FK_CLINICAL_HISTORY)

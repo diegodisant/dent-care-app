@@ -16,6 +16,8 @@ class CreateMedicalNotesTable extends Migration
             $table->unsignedBigInteger(MedicalNote::DB_FIELD_FK_APPOINTMENT);
             $table->string(MedicalNote::DB_FIELD_APPLIED_TREATMENT);
             $table->string(MedicalNote::DB_FIELD_ADDITIONAL_NOTES);
+
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign(MedicalNote::DB_FIELD_FK_APPOINTMENT)

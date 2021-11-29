@@ -30,6 +30,8 @@ class CreateClinicalHistoriesTable extends Migration
                 ClinicalHistory::ALLOWED_ASSURANCE_TYPES
             );
             $table->string(ClinicalHistory::DB_COLUMN_NSS);
+
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign(ClinicalHistory::DB_COLUMN_FK_PATIENT)

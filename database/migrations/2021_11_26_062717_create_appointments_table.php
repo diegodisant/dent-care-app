@@ -19,6 +19,8 @@ class CreateAppointmentsTable extends Migration
                 Appointment::DB_FIELD_STATUS,
                 Appointment::ALLOWED_STATUSES
             );
+
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign(Appointment::DB_FIELD_FK_PATIENT)

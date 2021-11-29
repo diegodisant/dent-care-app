@@ -13,6 +13,8 @@ class CreateClinicalHistorySectionsTable extends Migration
         Schema::create(ClinicalHistorySection::TABLE_NAME, function (Blueprint $table) {
             $table->id(ClinicalHistorySection::DB_FIELD_ID);
             $table->string(ClinicalHistorySection::DB_FIELD_TITLE);
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }

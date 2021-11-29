@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
                 User::DB_FIELD_USER_TYPE,
                 User::ALLOWED_USER_TYPES
             )->default(User::USER_TYPE_PATIENT);
+
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });
