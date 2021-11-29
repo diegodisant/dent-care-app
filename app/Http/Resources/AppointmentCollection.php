@@ -8,11 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use JsonSerializable;
 
-class UserCollection extends ResourceCollection implements CollectionInterface
+class AppointmentCollection extends ResourceCollection
 {
-    /** @var string $collects */
-    public $collects = UserResource::class;
-
     /**
      * Transform the resource collection into an array.
      *
@@ -20,8 +17,6 @@ class UserCollection extends ResourceCollection implements CollectionInterface
      */
     public function toArray($request): Arrayable | JsonSerializable | array
     {
-        return [
-            self::FIELD_DATA => $this->collection,
-        ];
+        return parent::toArray($request);
     }
 }

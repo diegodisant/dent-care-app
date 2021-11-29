@@ -1,14 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Resources;
 
-use App\Models\User;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
 
-class UserResource extends JsonResource
+class PatientResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,11 +17,6 @@ class UserResource extends JsonResource
      */
     public function toArray($request): Arrayable | JsonSerializable | array
     {
-        return [
-            User::DB_FIELD_ID => $this->id,
-            User::DB_FIELD_NAME => $this->name,
-            User::DB_FIELD_EMAIL => $this->email,
-            User::DB_FIELD_USER_TYPE => $this->user_type,
-        ];
+        return parent::toArray($request);
     }
 }
