@@ -21,7 +21,7 @@ class UserCollection extends ResourceCollection implements CollectionInterface
     public function toArray($request): Arrayable | JsonSerializable | array
     {
         return [
-            self::FIELD_DATA => $this->collection,
+            self::FIELD_ITEMS => $this->collection,
             self::FIELD_PAGINATION => $this->additional,
         ];
     }
