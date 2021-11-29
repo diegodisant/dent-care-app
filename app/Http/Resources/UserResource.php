@@ -6,9 +6,15 @@ use App\Models\User;
 use JsonSerializable;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Http\Request;
 
 class UserResource extends JsonResource
 {
+    /**
+     * Transform the resource into an array.
+     *
+     * @param Request $request
+     */
     public function toArray($request): Arrayable | JsonSerializable | array
     {
         return [
