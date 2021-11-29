@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Requests\V1\ClinicalHistoryRequest;
 use App\Models\ClinicalHistory;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class ClinicalHistoryController extends ApiController
@@ -19,7 +19,7 @@ class ClinicalHistoryController extends ApiController
         //
     }
 
-    public function store(Request $request): Response
+    public function store(ClinicalHistoryRequest $request): Response
     {
         //
     }
@@ -29,7 +29,7 @@ class ClinicalHistoryController extends ApiController
         //
     }
 
-    public function update(Request $request, ClinicalHistory $clinicalHistory): Response
+    public function update(ClinicalHistoryRequest $request, ClinicalHistory $clinicalHistory): Response
     {
         //
     }

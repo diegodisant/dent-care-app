@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Requests\V1\UserRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UserController extends ApiController
@@ -19,7 +19,7 @@ class UserController extends ApiController
         //
     }
 
-    public function store(Request $request): Response
+    public function store(UserRequest $request): Response
     {
         //
     }
@@ -29,7 +29,7 @@ class UserController extends ApiController
         //
     }
 
-    public function update(Request $request, User $user): Response
+    public function update(UserRequest $request, User $user): Response
     {
         //
     }

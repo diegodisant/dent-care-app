@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Requests\V1\MedicalNoteRequest;
 use App\Models\MedicalNote;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class MedicalNoteController extends ApiController
@@ -19,7 +19,7 @@ class MedicalNoteController extends ApiController
         //
     }
 
-    public function store(Request $request): Response
+    public function store(MedicalNoteRequest $request): Response
     {
         //
     }
@@ -29,7 +29,7 @@ class MedicalNoteController extends ApiController
         //
     }
 
-    public function update(Request $request, MedicalNote $medicalNote): Response
+    public function update(MedicalNoteRequest $request, MedicalNote $medicalNote): Response
     {
         //
     }

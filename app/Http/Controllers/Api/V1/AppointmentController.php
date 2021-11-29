@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Http\Requests\V1\AppointmentRequest;
 use App\Models\Appointment;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class AppointmentController extends ApiController
@@ -19,7 +19,7 @@ class AppointmentController extends ApiController
         //
     }
 
-    public function store(Request $request): Response
+    public function store(AppointmentRequest $request): Response
     {
         //
     }
@@ -29,7 +29,7 @@ class AppointmentController extends ApiController
         //
     }
 
-    public function update(Request $request, Appointment $appointment): Response
+    public function update(AppointmentRequest $request, Appointment $appointment): Response
     {
         //
     }
