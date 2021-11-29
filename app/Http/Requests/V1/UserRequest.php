@@ -12,7 +12,7 @@ class UserRequest extends ApiRequest
         return [
             User::DB_FIELD_NAME => 'required|string',
             User::DB_FIELD_EMAIL => 'required|email',
-            User::DB_FIELD_PASSWORD => 'required|string|min:5|max:12',
+            User::DB_FIELD_PASSWORD => 'nullable|string|min:5|max:12',
             User::USER_TYPE_ADMIN => 'nullable|string|in:' . implode(',', User::ALLOWED_USER_TYPES),
         ];
     }
