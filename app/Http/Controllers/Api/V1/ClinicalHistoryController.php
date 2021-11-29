@@ -3,13 +3,17 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
 use App\Models\ClinicalHistory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class ClinicalHistoryController extends Controller
+class ClinicalHistoryController extends ApiController
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function index(): Response
     {
         //
