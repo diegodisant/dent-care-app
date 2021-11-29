@@ -14,7 +14,7 @@ class CreateAppointmentsTable extends Migration
         Schema::create(Appointment::TABLE_NAME, function (Blueprint $table) {
             $table->id(Appointment::DB_FIELD_ID);
             $table->unsignedBigInteger(Appointment::DB_FIELD_FK_PATIENT);
-            $table->dateTime(Appointment::DB_APPOINTMENT_AT);
+            $table->dateTime(Appointment::DB_FIELD_APPOINTMENT_AT);
             $table->enum(
                 Appointment::DB_FIELD_STATUS,
                 Appointment::ALLOWED_STATUSES

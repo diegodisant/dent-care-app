@@ -14,7 +14,7 @@ class Appointment extends Model implements ModelInterface
     public const TABLE_NAME = 'appointments';
 
     public const DB_FIELD_FK_PATIENT = 'fk_patient';
-    public const DB_APPOINTMENT_AT = 'appointment_at';
+    public const DB_FIELD_APPOINTMENT_AT = 'appointment_at';
     public const DB_FIELD_STATUS = 'status';
 
     public const STATUS_ACTIVE = 'active';
@@ -29,11 +29,11 @@ class Appointment extends Model implements ModelInterface
 
     protected $fillable = [
         self::DB_FIELD_FK_PATIENT,
-        self::DB_APPOINTMENT_AT,
+        self::DB_FIELD_APPOINTMENT_AT,
         self::DB_FIELD_STATUS,
     ];
 
     protected $casts = [
-        self::DB_APPOINTMENT_AT => 'datetime',
+        self::DB_FIELD_APPOINTMENT_AT => 'datetime',
     ];
 }
