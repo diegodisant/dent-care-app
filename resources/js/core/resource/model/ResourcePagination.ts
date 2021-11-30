@@ -1,23 +1,23 @@
 export default interface ResourcePagination {
-    total: number;
+  total: number;
 
-    per_page: number;
+  per_page: number;
 
-    current_page: number;
+  current_page: number;
 
-    last_page: number;
+  last_page: number;
 
-    first_page_url: string;
+  first_page_url: string;
 
-    last_page_url: string;
+  last_page_url: string;
 
-    next_page_url: string;
+  next_page_url: string;
 
-    prev_page_url: string | null;
+  prev_page_url: string | null;
 
-    path: string;
+  path: string;
 
-    from: number;
+  from: number;
 
-    to: number;
+  to: number;
 }

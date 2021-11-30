@@ -1,4 +1,4 @@
 export enum UserTypesEnum {
-    Admin = 'admin',
-    Patient = 'patient',
+  Admin = 'admin',
+  Patient = 'patient',
 }

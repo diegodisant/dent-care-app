@@ -4,8 +4,7 @@ import ResourcePagination from "./model/ResourcePagination";
 import ViewModelAbstract from "../model/view/ViewModelAbstract";
 
 export default class ResourceCollection {
-    // @ts-ignore
-    private paginationData: ResourcePagination;
+    private paginationData!: ResourcePagination;
 
     public fromResponse<ModelType>(
         responseData: ResourceCollectionResponse,

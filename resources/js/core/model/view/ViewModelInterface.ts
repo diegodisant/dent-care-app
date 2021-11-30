@@ -1,11 +1,11 @@
 import ApiModelInterface from "../api/ApiModelInterface";
 
 export default interface ViewModelInterface extends ApiModelInterface {
-    clear(): void;
+  clear(): void;
 
-    clone(): ViewModelInterface;
+  clone(): ViewModelInterface;
 
-    getTableHeaders(): string[];
+  getTableHeaders(): string[];
 
-    toObject(): object;
+  toObject(): object;
 }

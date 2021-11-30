@@ -3,67 +3,71 @@ import {NonTypedObject} from "../type/object/NonTypedObject";
 import {UserTypesEnum} from "../type/enum/UserTypesEnum";
 
 export class User extends ViewModelAbstract {
-    public id: number;
+  public id: number;
 
-    public name: string;
+  public name: string;
 
-    public email: string;
+  public email: string;
 
-    public password: string;
+  public password: string;
 
-    public userType: UserTypesEnum;
+  public userType: UserTypesEnum;
 
-    private tableHeaders: string[] = [
-        '#',
-        'Nombre',
-        'Email',
-        'Tipo de usuario',
-        'Opciones',
-    ];
+  private tableHeaders: string[] = [
+    '#',
+    'Nombre',
+    'Email',
+    'Tipo de usuario',
+    'Opciones',
+  ];
 
-    constructor() {
-        super('users');
+  constructor() {
+    super('users');
 
-        this.id = 0;
-        this.name = '';
-        this.email = '';
-        this.password = '';
-        this.userType = UserTypesEnum.Patient;
-    }
+    this.id = 0;
+    this.name = '';
+    this.email = '';
+    this.password = '';
+    this.userType = UserTypesEnum.Patient;
+  }
 
-    clear(): void {
-        this.id = 0;
-        this.name = '';
-        this.email = '';
-        this.password = '';
-        this.userType = UserTypesEnum.Patient;
-    }
+  clear(): void {
+    this.id = 0;
+    this.name = '';
+    this.email = '';
+    this.password = '';
+    this.userType = UserTypesEnum.Patient;
+  }
 
-    clone(): User {
-        const user = new User();
+  clone(): User {
+    const user = new User();
 
-        user.id = this.id;
-        user.name = this.name;
-        user.email = this.email;
-        user.password = this.password;
-        user.userType = this.userType;
+    user.id = this.id;
+    user.name = this.name;
+    user.email = this.email;
+    user.password = this.password;
+    user.userType = this.userType;
 
-        return user;
-    }
+    return user;
+  }
 
-    getTableHeaders(): string[] {
-        return this.tableHeaders;
-    }
+  getTableHeaders(): string[] {
+    return this.tableHeaders;
+  }
 
-    toObject(): object {
-        return {
-            name: this.name,
-            email: this.email,
-            password: this.password,
-            userType: this.userType,
-        };
-    }
+  toObject(): object {
+    return {
+      name: this.name,
+      email: this.email,
+      password: this.password,
+      user_type: this.userType,
+    };
+  }
 
-    fromApiResource(resource: NonTypedObject): void {
-    }
+  fromApiResource(resource: NonTypedObject): void {
+    this.id = resource.id;
+    this.name = resource.name;
+    this.email = resource.email;
+    this.userType = resource.user_type;
+  }
 }

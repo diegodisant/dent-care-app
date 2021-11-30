@@ -1,19 +1,19 @@
 <template>
-    <div>
-        {{message}}
-    </div>
+  <div>
+    {{message}}
+  </div>
 </template>
 
 <script lang="ts">
 export default {
-    computed: {},
-    mounted(): void {
-        console.log('Component mounted');
-    },
-    data(): object {
-        return {
-            message: 'Welcome to Users Module :D',
-        };
-    }
+  computed: {},
+  mounted(): void {
+    console.log('Component mounted');
+  },
+  data(): object {
+    return {
+      message: 'Welcome to Users Module :D',
+    };
+  }
 };
 </script>

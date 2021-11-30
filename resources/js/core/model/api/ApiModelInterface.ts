@@ -1,11 +1,11 @@
 import {NonTypedObject} from "../../type/object/NonTypedObject";
 
 export default interface ApiModelInterface {
-    id: number;
+  id: number;
 
-    fromApiResource(resource: NonTypedObject): void;
+  fromApiResource(resource: NonTypedObject): void;
 
-    getApiResourceUrl(): string;
+  getApiResourceUrl(): string;
 
-    getApiResourceUrlById(): string;
+  getApiResourceUrlById(): string;
 }
