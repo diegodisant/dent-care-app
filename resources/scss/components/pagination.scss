@@ -1,0 +1,52 @@
+.pagination {
+  & {
+    font-weight: bold;
+  }
+
+  .label {
+    & {
+      font-size: 30px;
+    }
+
+    &.last-page {
+      @extend .primary-red-text;
+    }
+  }
+
+  .button {
+    & {
+      font-size: 30px;
+      padding: 15px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-top: 20px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.disabled {
+      @extend .secondary-grey-text;
+    }
+
+    &.disabled:hover {
+      background-color: #616161 !important;
+
+      cursor: not-allowed;
+      color: white;
+    }
+
+    &.first:hover, &.last:hover {
+      @extend .primary-red-background;
+      color: white;
+    }
+
+    &.prev:hover, &.next:hover {
+      @extend .secondary-blue-background;
+
+      color: white;
+    }
+  }
+}

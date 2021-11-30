@@ -2,7 +2,7 @@ import ViewModelAbstract from "./view/ViewModelAbstract";
 import {NonTypedObject} from "../type/object/NonTypedObject";
 import {UserTypesEnum} from "../type/enum/UserTypesEnum";
 
-export class User extends ViewModelAbstract {
+export default class User extends ViewModelAbstract {
   public id: number;
 
   public name: string;

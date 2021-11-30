@@ -11,7 +11,7 @@ export default abstract class BaseComponent extends Vue {
 
   public models: ViewModelInterface[];
 
-  public paginationData!: ResourcePagination;
+  public paginationData: ResourcePagination;
 
   public isFormShowing: boolean;
 
@@ -28,18 +28,37 @@ export default abstract class BaseComponent extends Vue {
     this.isFormShowing = false;
     this.isWindowLoading = true;
     this.axiosService = new AxiosService();
+
+    this.paginationData = {
+      current_page: 1,
+      first_page_url: "",
+      from: 1,
+      last_page: 1,
+      last_page_url: null,
+      next_page_url: null,
+      path: "",
+      per_page: 0,
+      prev_page_url: null,
+      to: 0,
+      total: 0
+    };
   }
 
   public all(): void {
+    this.isWindowLoading = true;
+
     this.axiosService.all(
       this.model,
       (responseData: ResourceCollectionResponse) => {
-        this.buildCollection(responseData);
+        this.models = [];
         this.isWindowLoading = false;
+
+        this.buildCollection(responseData);
       },
       (responseError: NonTypedObject) => {
-        console.log(responseError);
         this.isWindowLoading = false;
+
+        console.log(responseError);
       }
     );
   }

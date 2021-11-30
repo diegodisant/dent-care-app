@@ -7,13 +7,13 @@ export default interface ResourcePagination {
 
   last_page: number;
 
-  first_page_url: string;
+  first_page_url?: string | null;
 
-  last_page_url: string;
+  last_page_url?: string | null;
 
-  next_page_url: string;
+  next_page_url?: string | null;
 
-  prev_page_url: string | null;
+  prev_page_url?: string | null;
 
   path: string;
 

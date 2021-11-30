@@ -1,0 +1,73 @@
+.module {
+  .add-button {
+    @extend .secondary-green-background;
+
+    border-radius: 50%;
+    padding: 10px;
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 40px;
+
+    span {
+      font-size: 40px !important;
+      color: white;
+    }
+  }
+
+  .table-section {
+    .item-badge {
+      & {
+        text-align: center;
+      }
+
+      span {
+        @extend .secondary-blue-background;
+
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 20px;
+        color: white;
+        font-weight: bold;
+        text-transform: lowercase;
+      }
+    }
+
+    .item-option {
+      & {
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+        font-size: 20px;
+        border-radius: 50%;
+        color: white;
+        cursor: pointer;
+      }
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      &.edit {
+        @extend .secondary-blue-background;
+      }
+
+      &.delete {
+        @extend .primary-red-background;
+      }
+    }
+
+    table {
+      tbody {
+        tr {
+          @extend .secondary-grey-border;
+
+          border-top-width: 1px;
+          border-top-style: solid;
+        }
+      }
+    }
+  }
+}
