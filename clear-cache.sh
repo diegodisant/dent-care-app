@@ -13,6 +13,7 @@ dcli composer install
 dcli yarn install
 dcli composer clear-cache
 dcli yarn cache clean
+dcli yarn dev
 
 # laravel caches
 dcli cache:clear
