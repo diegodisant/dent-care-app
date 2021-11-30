@@ -10,7 +10,9 @@ abstract class ApiRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return Auth::check();
+        //return Auth::check();
+
+        return true;
     }
 
     abstract public function rules(): array;

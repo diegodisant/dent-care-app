@@ -33,12 +33,12 @@ abstract class ApiController extends Controller
 
     public function __construct()
     {
-        $this->middleware(
+        /*$this->middleware(
             self::MIDDLEWARE_AUTH_API,
             [
                 self::RULE_EXCEPT => self::ROUTES_EXCLUDED,
             ]
-        );
+        );*/
     }
 
     protected function buildPaginationData(LengthAwarePaginator $paginator): array
