@@ -16,7 +16,8 @@ dcli yarn cache clean
 dcli yarn dev
 
 # laravel caches
-dcli cache:clear
-dcli config:clear
-dcli route:clear
-dcli view:clear
+artisan cache:clear
+artisan view:clear
+artisan route:clear
+artisan clear-compiled
+artisan config:clear
