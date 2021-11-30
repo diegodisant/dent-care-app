@@ -3,9 +3,7 @@ import ResourceCollectionResponse from "./response/ResourceCollectionResponse";
 import ResourcePagination from "./model/ResourcePagination";
 import ViewModelAbstract from "../model/view/ViewModelAbstract";
 
-export default class ResourceCollection {
-    private paginationData!: ResourcePagination;
-
+class ResourceCollection {
     public fromResponse<ModelType>(
         responseData: ResourceCollectionResponse,
         InstanceType: (new () => ModelType),
@@ -22,17 +20,8 @@ export default class ResourceCollection {
             retrievedModel.fromApiResource(item);
             transformedModels.push(retrievedModel);
         });
-
-        this.setPaginationData(responseData.pagination);
-
         return transformedModels;
     }
-
-    public setPaginationData(paginationData: ResourcePagination): void {
-        this.paginationData = paginationData;
-    }
-
-    public getPaginationData(): ResourcePagination {
-        return this.paginationData;
-    }
 }
+
+export default new ResourceCollection();

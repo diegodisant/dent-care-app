@@ -4,13 +4,18 @@ import AxiosServiceInterface from "../service/communication/AxiosServiceInterfac
 import AxiosService from "../service/communication/AxiosService";
 import ResourceCollectionResponse from "../resource/response/ResourceCollectionResponse";
 import {NonTypedObject} from "../type/object/NonTypedObject";
+import ResourcePagination from "../resource/model/ResourcePagination";
 
 export default abstract class BaseComponent extends Vue {
   public model!: ViewModelInterface;
 
   public models: ViewModelInterface[];
 
+  public paginationData!: ResourcePagination;
+
   public isFormShowing: boolean;
+
+  public isWindowLoading: boolean;
 
   public axiosService: AxiosServiceInterface;
 
@@ -21,6 +26,7 @@ export default abstract class BaseComponent extends Vue {
 
     this.models = [];
     this.isFormShowing = false;
+    this.isWindowLoading = true;
     this.axiosService = new AxiosService();
   }
 
@@ -28,11 +34,21 @@ export default abstract class BaseComponent extends Vue {
     this.axiosService.all(
       this.model,
       (responseData: ResourceCollectionResponse) => {
-
+        this.buildCollection(responseData);
+        this.isWindowLoading = false;
       },
       (responseError: NonTypedObject) => {
-
+        console.log(responseError);
+        this.isWindowLoading = false;
       }
     );
+  }
+
+  public create(): void {
+
+  }
+
+  public edit(): void {
+
   }
 }
