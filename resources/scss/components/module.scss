@@ -70,4 +70,71 @@
       }
     }
   }
+
+  .base-form {
+    .form-title {
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    .field {
+      &:first-child {
+        margin-top: 30px;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+
+      input, select {
+        width: 350px;
+      }
+    }
+
+    .title {
+      font-size: 30px;
+      text-transform: uppercase;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    .buttons {
+      & {
+        margin: 40px;
+        text-align: center;
+      }
+
+      .button {
+        & {
+          padding: 15px;
+          text-transform: uppercase;
+          border-radius: 15px;
+          color: white;
+        }
+
+        &:hover {
+          cursor: pointer;
+          font-weight: bold !important;
+        }
+
+        &:not(:first-child) {
+          margin-left: 30px;
+        }
+
+        &.add {
+          @extend .secondary-green-background;
+        }
+
+        &.edit {
+          @extend .secondary-blue-background;
+        }
+
+        &.cancel {
+          @extend .primary-red-background;
+        }
+      }
+    }
+  }
 }
