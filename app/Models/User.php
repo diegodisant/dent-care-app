@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable implements ModelInterface
 {
@@ -45,4 +46,15 @@ class User extends Authenticatable implements ModelInterface
     protected $casts = [
         self::DB_FIELD_EMAIL_VERIFIED_AT => 'datetime',
     ];
+
+    public function __construct(array $attributes = [])
+    {
+        if (isset($attributes[self::DB_FIELD_PASSWORD])) {
+            $attributes[self::DB_FIELD_PASSWORD] = Hash::make(
+                $attributes[self::DB_FIELD_PASSWORD]
+            );
+        }
+
+        parent::__construct($attributes);
+    }
 }
