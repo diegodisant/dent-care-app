@@ -5,9 +5,9 @@ namespace App\Service\Communication\Config;
 
 class TwilioConfig
 {
-    private const SERVICE_CONFIG_SID = 'sid';
-    private const SERVICE_CONFIG_TOKEN = 'token';
-    private const SERVICE_CONFIG_NUMBER = 'number';
+    public const SERVICE_CONFIG_SID = 'sid';
+    public const SERVICE_CONFIG_TOKEN = 'token';
+    public const SERVICE_CONFIG_NUMBER = 'number';
 
     private string $accountSid;
 
