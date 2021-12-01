@@ -50,15 +50,16 @@ class UserController extends ApiController
         return new JsonResponse($userResource);
     }
 
-    public function show(User $user): JsonResponse
+    public function show(int $user): JsonResponse
     {
+        $userId = (int) $user->id;
         $storedUser = DB::table(User::TABLE_NAME)
-            ->find($user->id);
+            ->find($userId);
 
-        if ($user === null) {
+        if ($storedUser === null) {
             return new NotFoundErrorResponse(
                 User::class,
-                $storedUser
+                $userId
             );
         }
 
