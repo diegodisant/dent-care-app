@@ -117,7 +117,7 @@ import {NonTypedObject} from "../../js/core/type/object/NonTypedObject";
 import Patient from "../../js/core/model/Patient";
 
 @Component({})
-export default class Users extends Vue {
+export default class Patients extends Vue {
 
   public model!: Patient;
 
@@ -267,7 +267,7 @@ export default class Users extends Vue {
   public onClickDeleteConfirmButton(): void {
     this.isWindowLoading = true;
 
-    this.models = _.remove(this.models, (user: User) => {
+    this.models = _.remove(this.models, (user: Patient) => {
       return user.id !== this.model.id;
     });
 
