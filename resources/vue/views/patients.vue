@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="table-section" v-if="isFormShowing === false">
+    <loading-screen
+      :loading="isWindowLoading"
+    ></loading-screen>
+    <div class="table-section" v-if="isFormShowing === false && isDeleteConfirmShowing === false">
       <div class="grid grid-cols-1 gap-10 justify-items-center">
-        <loading-screen
-          :loading="isWindowLoading"
-        ></loading-screen>
         <div>
           <table class="table-auto">
             <thead>
@@ -19,17 +19,17 @@
             </thead>
             <tbody>
             <tr
-              v-for="(user, userIndex) of models"
+              v-for="(patient, patientIndex) of models"
             >
-              <th class="py-3 px-3">{{ userIndex + 1 }}</th>
-              <td class="py-3 px-3">{{ user.name }}</td>
-              <td class="py-3 px-3">{{ user.phoneNumber }}</td>
-              <td class="py-3 px-3">{{ user.birthDate }}</td>
-              <td class="py-3 px-3">{{ user.address }}</td>
+              <th class="py-3 px-3">{{ patientIndex + 1 }}</th>
+              <td class="py-3 px-3">{{ patient.name }}</td>
+              <td class="py-3 px-3">{{ patient.phoneNumber }}</td>
+              <td class="py-3 px-3">{{ patient.birthDate }}</td>
+              <td class="py-3 px-3">{{ patient.address }}</td>
               <td class="py-3 px-3">
-                <span class="item-option material-icons edit" @click="onClickEditButton">mode_edit</span>
+                <span class="item-option material-icons edit" @click="onClickEditButton(patient)">mode_edit</span>
                 <span class="item-option material-icons edit" @click="onClickDentoGramButton">history_edu</span>
-                <span class="item-option material-icons delete" @click="onClickDeleteButton">delete</span>
+                <span class="item-option material-icons delete" @click="onClickDeleteButton(patient)">delete</span>
               </td>
             </tr>
             </tbody>
@@ -72,7 +72,7 @@
             </div>
             <div class="buttons">
               <span class="button add" type="button" @click="onClickFormAddButton" v-if="isAddFormShowing === true">Agregar</span>
-              <span class="button edit" type="button" @click="onClickEditButton" v-if="isEditFormShowing === true">Editar</span>
+              <span class="button edit" type="button" @click="onClickFormEditButton" v-if="isEditFormShowing === true">Editar</span>
               <span class="button cancel" type="button" @click="onClickFormCancelButton">Cancelar</span>
             </div>
           </form>
@@ -83,10 +83,24 @@
       <button
         class="add-button"
         @click="this.onClickCreateButton"
-        v-bind:class="{ 'disabled': isEditFormShowing }"
+        v-bind:class="{ 'disabled': isEditFormShowing, 'disabled': isEditFormShowing}"
       >
         <span class="material-icons">add</span>
       </button>
+    </div>
+    <div class="delete-confirm" v-if="isFormShowing === false && isDeleteConfirmShowing === true">
+      <div class="grid grid-cols-1 gap-10 justify-items-center">
+        <div></div>
+        <div>
+          <div class="main-icon"><span class=" material-icons">warning</span></div>
+          <h2>¿Estás seguro que deseas al paciente con nombre <span>{{ model.name }}</span>?</h2>
+          <div class="buttons">
+            <span class="button add" type="button" @click="onClickDeleteConfirmButton">Aceptar</span>
+            <span class="button cancel" type="button" @click="onClickDeleteConfirmCancelButton">Cancelar</span>
+          </div>
+        </div>
+        <div></div>
+      </div>
     </div>
   </div>
 </template>
@@ -103,7 +117,7 @@ import {NonTypedObject} from "../../js/core/type/object/NonTypedObject";
 import Patient from "../../js/core/model/Patient";
 
 @Component({})
-export default class Patients extends Vue {
+export default class Users extends Vue {
 
   public model!: Patient;
 
@@ -117,7 +131,7 @@ export default class Patients extends Vue {
 
   public isEditFormShowing: boolean;
 
-  public isRemoveConfirmShowing: boolean;
+  public isDeleteConfirmShowing: boolean;
 
   public axiosService: AxiosServiceInterface;
 
@@ -128,7 +142,7 @@ export default class Patients extends Vue {
     this.isWindowLoading = true;
     this.isAddFormShowing = false;
     this.isEditFormShowing = false;
-    this.isRemoveConfirmShowing = false;
+    this.isDeleteConfirmShowing = false;
     this.axiosService = new AxiosService();
 
     this.paginationData = {
@@ -162,6 +176,7 @@ export default class Patients extends Vue {
   public hideForms(): void {
     this.isAddFormShowing = false;
     this.isEditFormShowing = false;
+    this.isDeleteConfirmShowing = false;
   }
 
   public all(): void {
@@ -192,14 +207,16 @@ export default class Patients extends Vue {
     this.isAddFormShowing = true;
   }
 
-  public onClickEditButton(): void {
+  public onClickEditButton(patient: Patient): void {
     this.hideForms();
     this.isEditFormShowing = true;
+    this.model = patient;
   }
 
-  public onClickDeleteButton(): void {
+  public onClickDeleteButton(patient: Patient): void {
     this.hideForms();
-    this.isRemoveConfirmShowing = true;
+    this.isDeleteConfirmShowing = true;
+    this.model = patient;
   }
 
   public onClickFormCancelButton(): void {
@@ -228,14 +245,42 @@ export default class Patients extends Vue {
   }
 
   public onClickFormEditButton(): void {
+    this.isWindowLoading = true;
 
+    setTimeout(() => {
+      this.isWindowLoading = false;
+      this.hideForms();
+    }, 2000);
+
+    const replacingIndex: number = _.findIndex(
+      this.models,
+      { id: this.model.id }
+    );
+
+    this.models.splice(
+      replacingIndex,
+      1,
+      this.model.clone()
+    );
   }
 
-  public onClickDentoGramButton(): void {
-    window.open(
-      'https://app.derec.ch/patients/3f4d89ec-8334-4bd9-8060-c23ba3cdab21/chart',
-      '_blank'
-    );
+  public onClickDeleteConfirmButton(): void {
+    this.isWindowLoading = true;
+
+    this.models = _.remove(this.models, (user: User) => {
+      return user.id !== this.model.id;
+    });
+
+    setTimeout(() => {
+      this.isWindowLoading = false;
+      this.hideForms();
+    }, 2000);
+  }
+
+  public onClickDeleteConfirmCancelButton(): void {
+    this.hideForms();
+
+    this.isDeleteConfirmShowing = false;
   }
 
   public buildCollection(responseData: ResourceCollectionResponse): void {
@@ -245,6 +290,13 @@ export default class Patients extends Vue {
     );
 
     this.paginationData = responseData.pagination;
+  }
+
+  public onClickDentoGramButton(): void {
+    window.open(
+      'https://app.derec.ch/patients/3f4d89ec-8334-4bd9-8060-c23ba3cdab21/chart',
+      '_blank'
+    );
   }
 
   public paginatorClickFirst(): void {

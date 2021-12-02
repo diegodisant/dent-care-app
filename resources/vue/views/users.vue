@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="table-section" v-if="isFormShowing === false">
+    <loading-screen
+      :loading="isWindowLoading"
+    ></loading-screen>
+    <div class="table-section" v-if="isFormShowing === false && isDeleteConfirmShowing === false">
       <div class="grid grid-cols-1 gap-10 justify-items-center">
-        <loading-screen
-          :loading="isWindowLoading"
-        ></loading-screen>
         <div>
           <table class="table-auto">
             <thead>
@@ -29,8 +29,8 @@
                 <span v-if="user.userType === 'patient'">paciente</span>
               </td>
               <td class="py-3 px-3">
-                <span class="item-option material-icons edit" @click="onClickEditButton">mode_edit</span>
-                <span class="item-option material-icons delete" @click="onClickDeleteButton">delete</span>
+                <span class="item-option material-icons edit" @click="onClickEditButton(user)">mode_edit</span>
+                <span class="item-option material-icons delete" @click="onClickDeleteButton(user)">delete</span>
               </td>
             </tr>
             </tbody>
@@ -76,7 +76,7 @@
             </div>
             <div class="buttons">
               <span class="button add" type="button" @click="onClickFormAddButton" v-if="isAddFormShowing === true">Agregar</span>
-              <span class="button edit" type="button" @click="onClickEditButton" v-if="isEditFormShowing === true">Editar</span>
+              <span class="button edit" type="button" @click="onClickFormEditButton" v-if="isEditFormShowing === true">Editar</span>
               <span class="button cancel" type="button" @click="onClickFormCancelButton">Cancelar</span>
             </div>
           </form>
@@ -87,10 +87,24 @@
       <button
         class="add-button"
         @click="this.onClickCreateButton"
-        v-bind:class="{ 'disabled': isEditFormShowing }"
+        v-bind:class="{ 'disabled': isEditFormShowing, 'disabled': isEditFormShowing}"
       >
         <span class="material-icons">add</span>
       </button>
+    </div>
+    <div class="delete-confirm" v-if="isFormShowing === false && isDeleteConfirmShowing === true">
+      <div class="grid grid-cols-1 gap-10 justify-items-center">
+        <div></div>
+        <div>
+          <div class="main-icon"><span class=" material-icons">warning</span></div>
+          <h2>¿Estás seguro que deseas eliminar al usuario con email <span>{{ model.email }}</span>?</h2>
+          <div class="buttons">
+            <span class="button add" type="button" @click="onClickDeleteConfirmButton">Aceptar</span>
+            <span class="button cancel" type="button" @click="onClickDeleteConfirmCancelButton">Cancelar</span>
+          </div>
+        </div>
+        <div></div>
+      </div>
     </div>
   </div>
 </template>
@@ -101,7 +115,6 @@ import Component from "vue-class-component";
 import User from "../../js/core/model/User";
 import ResourceCollectionResponse from "../../js/core/resource/response/ResourceCollectionResponse";
 import ResourceCollection from "../../js/core/resource/ResourceCollection";
-import ViewModelInterface from "../../js/core/model/view/ViewModelInterface";
 import ResourcePagination from "../../js/core/resource/model/ResourcePagination";
 import AxiosServiceInterface from "../../js/core/service/communication/AxiosServiceInterface";
 import AxiosService from "../../js/core/service/communication/AxiosService";
@@ -122,7 +135,7 @@ export default class Users extends Vue {
 
   public isEditFormShowing: boolean;
 
-  public isRemoveConfirmShowing: boolean;
+  public isDeleteConfirmShowing: boolean;
 
   public axiosService: AxiosServiceInterface;
 
@@ -133,7 +146,7 @@ export default class Users extends Vue {
     this.isWindowLoading = true;
     this.isAddFormShowing = false;
     this.isEditFormShowing = false;
-    this.isRemoveConfirmShowing = false;
+    this.isDeleteConfirmShowing = false;
     this.axiosService = new AxiosService();
 
     this.paginationData = {
@@ -167,6 +180,7 @@ export default class Users extends Vue {
   public hideForms(): void {
     this.isAddFormShowing = false;
     this.isEditFormShowing = false;
+    this.isDeleteConfirmShowing = false;
   }
 
   public all(): void {
@@ -197,14 +211,16 @@ export default class Users extends Vue {
     this.isAddFormShowing = true;
   }
 
-  public onClickEditButton(): void {
+  public onClickEditButton(user: User): void {
     this.hideForms();
     this.isEditFormShowing = true;
+    this.model = user;
   }
 
-  public onClickDeleteButton(): void {
+  public onClickDeleteButton(user: User): void {
     this.hideForms();
-    this.isRemoveConfirmShowing = true;
+    this.isDeleteConfirmShowing = true;
+    this.model = user;
   }
 
   public onClickFormCancelButton(): void {
@@ -233,7 +249,42 @@ export default class Users extends Vue {
   }
 
   public onClickFormEditButton(): void {
+    this.isWindowLoading = true;
 
+    setTimeout(() => {
+      this.isWindowLoading = false;
+      this.hideForms();
+    }, 2000);
+
+    const replacingIndex: number = _.findIndex(
+      this.models,
+      { id: this.model.id }
+    );
+
+    this.models.splice(
+      replacingIndex,
+      1,
+      this.model.clone()
+    );
+  }
+
+  public onClickDeleteConfirmButton(): void {
+    this.isWindowLoading = true;
+
+    this.models = _.remove(this.models, (user: User) => {
+      return user.id !== this.model.id;
+    });
+
+    setTimeout(() => {
+      this.isWindowLoading = false;
+      this.hideForms();
+    }, 2000);
+  }
+
+  public onClickDeleteConfirmCancelButton(): void {
+    this.hideForms();
+
+    this.isDeleteConfirmShowing = false;
   }
 
   public buildCollection(responseData: ResourceCollectionResponse): void {

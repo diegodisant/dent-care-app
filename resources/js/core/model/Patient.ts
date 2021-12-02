@@ -34,7 +34,7 @@ export default class Patient extends ViewModelAbstract {
     this.address = '';
   }
 
-  clone(): ViewModelInterface {
+  clone(): Patient {
     const patient = new Patient();
 
     patient.id = this.id;
