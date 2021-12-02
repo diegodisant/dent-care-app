@@ -17,11 +17,6 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends ApiController
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function index(): JsonResponse
     {
         $users = DB::table(User::TABLE_NAME)
@@ -29,7 +24,9 @@ class UserController extends ApiController
 
         $usersCollection = new UserCollection($users);
 
-        $usersCollection->additional($this->buildPaginationData($users));
+        $usersCollection->additional(
+            $this->buildPaginationData($users)
+        );
 
         return new JsonResponse($usersCollection);
     }
@@ -40,7 +37,9 @@ class UserController extends ApiController
         $wasSaved = $newUser->save();
 
         if (!$wasSaved) {
-            return new FailedCreationResponse(User::class);
+            return new FailedCreationResponse(
+                User::class
+            );
         }
 
         $userResource = new UserResource($newUser);
@@ -63,12 +62,7 @@ class UserController extends ApiController
             );
         }
 
-        $userResource = new UserResource($storedUser);
-
-        return new JsonResponse(
-            $userResource,
-            ApiResponseInterface::HTTP_STATUS_CREATED
-        );
+        return new JsonResponse(new UserResource($storedUser));
     }
 
     public function update(UserRequest $request, User $user): JsonResponse
@@ -76,10 +70,10 @@ class UserController extends ApiController
         $storedUser = DB::table(User::TABLE_NAME)
             ->find($user->id);
 
-        if ($user === null) {
+        if ($storedUser === null) {
             return new NotFoundErrorResponse(
                 User::class,
-                $storedUser
+                $user->id
             );
         }
 
@@ -94,9 +88,7 @@ class UserController extends ApiController
             );
         }
 
-        $userResource = new UserResource($storedUser);
-
-        return new JsonResponse($userResource);
+        return new JsonResponse(new UserResource($storedUser));
     }
 
     public function destroy(User $user): JsonResponse

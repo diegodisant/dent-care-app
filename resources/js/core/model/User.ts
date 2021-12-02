@@ -56,6 +56,14 @@ export default class User extends ViewModelAbstract {
   }
 
   toObject(): object {
+    if (this.password === '') {
+      return {
+        name: this.name,
+        email: this.email,
+        user_type: this.userType,
+      };
+    }
+
     return {
       name: this.name,
       email: this.email,

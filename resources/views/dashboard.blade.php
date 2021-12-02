@@ -11,7 +11,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="grid grid-cols-3 gap-4 modules content-between justify-items-center">
-                        <div></div>
+                        <!--<div></div>-->
 
                         <div class="item">
                             <a href="{{ route('dashboard.users') }}">
@@ -20,7 +20,7 @@
                             </a>
                         </div>
 
-                        <div></div>
+                        <!--<div></div>-->
 
                         <div class="item">
                             <a href="{{ route('dashboard.patients') }}">
@@ -36,12 +36,12 @@
                             </a>
                         </div>
 
-                        <div class="item">
+                        <!--<div class="item">
                             <a href="{{ route('dashboard.calendar') }}">
                                 <p>{{__('Calendar')}}</p>
                                 <img src="img/dashboard/calendar.png" class="image justify-self-center"/>
                             </a>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>

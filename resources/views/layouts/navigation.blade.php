@@ -24,13 +24,17 @@
                         {{ __('Patients') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('dashboard.appointments')" :active="request()->routeIs('dashboard.appointments')">
+                    <!--<x-nav-link :href="route('dashboard.appointments')" :active="request()->routeIs('dashboard.appointments')">
+                        {{ __('Appointments') }}
+                    </x-nav-link>-->
+
+                    <x-nav-link href="https://calendar.google.com/" :active="request()->routeIs('dashboard.appointments')">
                         {{ __('Appointments') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('dashboard.calendar')" :active="request()->routeIs('dashboard.calendar')">
+                    <!--<x-nav-link :href="route('dashboard.calendar')" :active="request()->routeIs('dashboard.calendar')">
                         {{ __('Calendar') }}
-                    </x-nav-link>
+                    </x-nav-link>-->
 
                 </div>
             </div>
@@ -97,13 +101,17 @@
                 {{ __('Patients') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('dashboard.appointments')" :active="request()->routeIs('dashboard.appointments')">
+            <x-responsive-nav-link href="https://calendar.google.com/" :active="request()->routeIs('dashboard.appointments')">
                 {{ __('Appointments') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('dashboard.calendar')" :active="request()->routeIs('dashboard.calendar')">
+            <!--<x-responsive-nav-link :href="route('dashboard.appointments')" :active="request()->routeIs('dashboard.appointments')">
+                {{ __('Appointments') }}
+            </x-responsive-nav-link>-->
+
+            <!--<x-responsive-nav-link :href="route('dashboard.calendar')" :active="request()->routeIs('dashboard.calendar')">
                 {{ __('Calendar') }}
-            </x-responsive-nav-link>
+            </x-responsive-nav-link>-->
 
         </div>
 

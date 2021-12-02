@@ -9,6 +9,8 @@ export default interface ApiModelInterface {
 
   getApiResourceUrl(): string;
 
+  getApiResourcePaginatedUrl(): string;
+
   getApiResourceUrlById(): string;
 
   setPage(page: number): void;

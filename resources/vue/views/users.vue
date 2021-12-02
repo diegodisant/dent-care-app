@@ -49,10 +49,11 @@
         <div></div>
       </div>
     </div>
-    <div class="base-form" v-if="isAddFormShowing === true || isEditFormShowing === true">
+    <div class="base-form" v-if="isFormShowing === true">
       <div class="grid grid-cols-1 gap-10 justify-items-center">
         <div>
-          <h2 class="form-title">Agregar</h2>
+          <h2 class="form-title" v-if="isAddFormShowing === true">Agregar</h2>
+          <h2 class="form-title" v-if="isEditFormShowing === true">Editar</h2>
           <form>
             <div class="field">
               <label class="block">Nombre completo</label>
@@ -74,15 +75,20 @@
               </select>
             </div>
             <div class="buttons">
-              <span class="button add" type="button">Agregar</span>
-              <span class="button cancel" type="button">Cancelar</span>
+              <span class="button add" type="button" @click="onClickFormAddButton" v-if="isAddFormShowing === true">Agregar</span>
+              <span class="button edit" type="button" @click="onClickEditButton" v-if="isEditFormShowing === true">Editar</span>
+              <span class="button cancel" type="button" @click="onClickFormCancelButton">Cancelar</span>
             </div>
           </form>
         </div>
       </div>
     </div>
     <div>
-      <button class="add-button" @click="this.onClickCreateButton">
+      <button
+        class="add-button"
+        @click="this.onClickCreateButton"
+        v-bind:class="{ 'disabled': isEditFormShowing }"
+      >
         <span class="material-icons">add</span>
       </button>
     </div>
@@ -112,8 +118,6 @@ export default class Users extends Vue {
 
   public isWindowLoading: boolean;
 
-  public isFormShowing: boolean;
-
   public isAddFormShowing: boolean;
 
   public isEditFormShowing: boolean;
@@ -127,7 +131,6 @@ export default class Users extends Vue {
 
     this.models = [];
     this.isWindowLoading = true;
-    this.isFormShowing = false;
     this.isAddFormShowing = false;
     this.isEditFormShowing = false;
     this.isRemoveConfirmShowing = false;
@@ -154,6 +157,18 @@ export default class Users extends Vue {
     this.all();
   }
 
+  get isFormShowing(): boolean {
+    return (
+      this.isAddFormShowing ||
+      this.isEditFormShowing
+    );
+  }
+
+  public hideForms(): void {
+    this.isAddFormShowing = false;
+    this.isEditFormShowing = false;
+  }
+
   public all(): void {
     this.isWindowLoading = true;
 
@@ -174,18 +189,51 @@ export default class Users extends Vue {
   }
 
   public onClickCreateButton(): void {
-    this.isFormShowing = true;
+    if (this.isEditFormShowing) {
+      return;
+    }
+
+    this.hideForms();
     this.isAddFormShowing = true;
   }
 
   public onClickEditButton(): void {
-    this.isFormShowing = true;
+    this.hideForms();
     this.isEditFormShowing = true;
   }
 
   public onClickDeleteButton(): void {
-    this.isFormShowing = true;
+    this.hideForms();
     this.isRemoveConfirmShowing = true;
+  }
+
+  public onClickFormCancelButton(): void {
+    this.hideForms();
+  }
+
+  public onClickFormAddButton(): void {
+    this.isWindowLoading = true;
+
+    this.axiosService.create(
+      this.model,
+      (responseData: NonTypedObject) => {
+        this.hideForms();
+        this.model.clear();
+        this.model.setPage(this.paginationData.last_page);
+        this.all();
+
+        console.log(responseData);
+      },
+      (responseError: NonTypedObject) => {
+        this.isWindowLoading = false;
+
+        console.log(responseError);
+      }
+    );
+  }
+
+  public onClickFormEditButton(): void {
+
   }
 
   public buildCollection(responseData: ResourceCollectionResponse): void {

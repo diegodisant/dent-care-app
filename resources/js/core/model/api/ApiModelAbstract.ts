@@ -22,6 +22,10 @@ export default abstract class ApiModelAbstract implements ApiModelInterface {
   }
 
   getApiResourceUrl(): string {
+    return this.endpointUrl;
+  }
+
+  getApiResourcePaginatedUrl(): string {
     return `${this.endpointUrl}?page=${this.page}`;
   }
 

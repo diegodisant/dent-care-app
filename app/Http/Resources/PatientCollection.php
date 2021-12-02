@@ -8,8 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use JsonSerializable;
 
-class PatientCollection extends ResourceCollection
+class PatientCollection extends ResourceCollection implements CollectionInterface
 {
+    /** @var string $collects */
+    public $collects = PatientResource::class;
+
     /**
      * Transform the resource collection into an array.
      *
@@ -17,6 +20,9 @@ class PatientCollection extends ResourceCollection
      */
     public function toArray($request): Arrayable | JsonSerializable |array
     {
-        return parent::toArray($request);
+        return [
+            self::FIELD_ITEMS => $this->collection,
+            self::FIELD_PAGINATION => $this->additional,
+        ];
     }
 }

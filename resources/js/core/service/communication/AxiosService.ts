@@ -21,7 +21,7 @@ export default class AxiosService implements AxiosServiceInterface{
     onFail: (responseError: NonTypedObject) => void
   ): void {
     this.client
-      .get(model.getApiResourceUrl())
+      .get(model.getApiResourcePaginatedUrl())
       .then((response: AxiosResponse) => {
         onSuccess(response.data);
       })
@@ -32,10 +32,20 @@ export default class AxiosService implements AxiosServiceInterface{
 
   create(
     model: ViewModelInterface,
-    onSuccess: (responseData: ResourceCollectionResponse) => void,
+    onSuccess: (responseData: NonTypedObject) => void,
     onFail: (responseError: NonTypedObject) => void
   ): void {
-    return;
+    this.client
+      .post(
+        model.getApiResourceUrl(),
+        model.toObject()
+      )
+      .then((response: AxiosResponse) => {
+        onSuccess(response);
+      })
+      .catch((error: AxiosError) => {
+        onFail(error);
+      })
   }
 
   update(
